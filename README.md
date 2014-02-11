@@ -1,6 +1,6 @@
-# Java
+# Vagrant Datomic
 
-This playbook installs Oracles Java rather than the OpenJDK version
+This playbook will boot up a Datomic server locally using Vagrant. It can also be deployed to a cloud server by changing the hosts file
 
 ## Getting started
 
