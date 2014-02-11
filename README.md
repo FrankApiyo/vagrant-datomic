@@ -1,5 +1,7 @@
 # Vagrant Datomic
 
+TODO install the console app https://dl.dropboxusercontent.com/u/6475135/datomic-console-0.1.170%20%281%29.zip
+
 This playbook will boot up a Datomic server locally using Vagrant. It can also be deployed to a cloud server by changing the hosts file
 
 ## Getting started
