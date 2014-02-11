@@ -41,8 +41,8 @@
 - name: Upload datomic properties file
   copy: src=datomic-transactor.properties dest={{ datomic_dir }}/transactor.properties
 
-# - name: Upload datomic upstart config file
-#  copy: src=datomic-upstart.conf dest=/etc/init/datomic.conf
+- name: Upload datomic upstart config file
+  copy: src=datomic-upstart.conf dest=/etc/init/datomic.conf
 
 - name: Link datomic
   file: src={{ datomic_dir }}/{{ datomic_filename }}
