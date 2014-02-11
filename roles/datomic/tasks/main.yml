@@ -1,12 +1,12 @@
 ---
-  
-# A playbook for installing Datomic free edition 
-# 
+
+# A playbook for installing Datomic free edition
+#
 - name: Install packages
   apt: pkg={{ item }}
   with_items:
     - unzip
-    
+
 - name: Create datomic user.
   user: name=datomic state=present
 
@@ -26,7 +26,9 @@
   when: datomic_exists|failed
 
 - name: Download datomic
-  get_url: url=http://downloads.datomic.com/{{ datomic_version}}/{{ datomic_filename }}.zip dest=${datomic_dir}
+
+  get_url: url=https://dl.dropboxusercontent.com/u/6475135/datomic-free-{{ datomic_version }}.zip
+           dest={{ datomic_dir }}
   when: datomic_exists|failed
 
 - name: Unpack datomic
@@ -39,8 +41,8 @@
 - name: Upload datomic properties file
   copy: src=datomic-transactor.properties dest={{ datomic_dir }}/transactor.properties
 
-- name: Upload datomic upstart config file
-  copy: src=datomic-upstart.conf dest=/etc/init/datomic.conf
+# - name: Upload datomic upstart config file
+#  copy: src=datomic-upstart.conf dest=/etc/init/datomic.conf
 
 - name: Link datomic
   file: src={{ datomic_dir }}/{{ datomic_filename }}
@@ -49,7 +51,7 @@
     group=datomic
     state=link
   when: datomic_exists|failed
-  
+
 - name: add {{ datomic_path }} to path
   lineinfile: >
     dest=/etc/environment
