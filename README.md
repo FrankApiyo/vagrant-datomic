@@ -2,7 +2,19 @@
 
 This playbook will boot up a Datomic server locally using Vagrant. It can also be deployed to a cloud server by changing the hosts file
 
-It's worth noting that Datomic is a total nightmare to automate the install for now because to download the db you need to go to the website and login. For now I've put the database on dropbox which makes an install easier. So be aware that if you change the version in roles/datomic/vars you will need to update the download URL yourself.
+It's worth noting that Datomic is a total nightmare to automate the install for now because to download 
+the db you need to go to the website and login. 
+
+For now I've put the database on dropbox which makes an install easier. So be aware that if you change the version in roles/datomic/vars you will need to update the download URL yourself.
+
+So in roles/datomic/tasks/main.yml update the following line to a URL where you can wget the package!
+
+```yaml
+- name: Download datomic
+  get_url: url=https://dl.dropboxusercontent.com/u/6475135/datomic-free-{{ datomic_version }}.zip
+           dest={{ datomic_dir }}
+  when: datomic_exists|failed
+```
 
 ## Getting started
 
