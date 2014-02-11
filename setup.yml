@@ -1,0 +1,7 @@
+---
+- hosts: all
+  sudo: yes
+  gather_facts: no
+  roles:
+    - java
+    - datomic
