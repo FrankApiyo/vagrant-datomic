@@ -27,7 +27,7 @@
 
 - name: Download datomic
 
-  get_url: url=https://dl.dropboxusercontent.com/u/6475135/datomic-free-{{ datomic_version }}.zip
+  get_url: url=https://my.datomic.com/downloads/free/{{ datomic_version }}
            dest={{ datomic_dir }}
   when: datomic_exists|failed
 
