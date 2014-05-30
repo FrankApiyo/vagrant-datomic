@@ -14,7 +14,7 @@
 (def uri
   (apply
     (partial format "datomic:free://%s:%s/%s")
-      (reverse (vals config))))
+      (vals config)))
 
 (defn connect! [uri]
   (do
